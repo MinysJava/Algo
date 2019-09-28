@@ -1,9 +1,6 @@
 package Lesson_2;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
-public class MyArray<Item> {
+public class MyArray<Item extends Comparable> {
     private Item[] list;
     private int size = 0;
     private final int DEFAULT_CAPACITY = 10;
@@ -12,12 +9,12 @@ public class MyArray<Item> {
         if(capacity <= 0){
             throw new IllegalArgumentException("capacity <= 0");
         }
-        list = (Item[]) new Object[capacity];
+        list = (Item[]) new Comparable[capacity];
     }
 
     public MyArray(){
 
-        list = (Item[]) new Object[DEFAULT_CAPACITY];
+        list = (Item[]) new Comparable[DEFAULT_CAPACITY];
     }
 
     public void add(Item item){
@@ -46,7 +43,7 @@ public class MyArray<Item> {
 //-------------------Увеличивает размер массива при его заполнении----------------------
     private void cheakLength() {
         if (list[list.length - 1] != null){
-            Item[] newList =(Item[]) new Object[(list.length * 2)];
+            Item[] newList =(Item[]) new Comparable[(list.length * 2)];
             System.arraycopy(list,0, newList,0, list.length);
             list = newList;
         }
@@ -97,4 +94,59 @@ public class MyArray<Item> {
         }
         return s;
     }
+
+    private boolean less(Item item1, Item item2){
+        return item1.compareTo(item2) < 0;
+    }
+
+    private void swap(int index1, int index2){
+        Item temp = list[index1];
+        list[index1] = list[index2];
+        list[index2] = temp;
+    }
+
+    public void seletionSort(){
+        int iMin;
+        for (int i = 0; i < size - 1; i++) {
+            iMin = i;
+            for (int j = i + 1; j < size; j++) {
+                if(less(list[j], list[iMin])){
+                    iMin = j;
+                }
+            }
+            swap(i, iMin);
+        }
+    }
+
+    public void insertSort(){
+        Item key;
+        for (int i = 1; i < size; i++) {
+            int j = i;
+            key = list[i];
+
+            while (j > 0 && less(key, list[j - 1])){
+                list[j] = list[j - 1];
+                j--;
+            }
+            list[j] = key;
+        }
+    }
+
+    public void bubbleSort(){
+        boolean isSwap;
+        for (int i = size - 1; i > 0; i--) {
+            isSwap = false;
+            for (int j = 0; j < i; j++) {
+                if (less(list[j + 1], list[j])){
+                    swap(j + 1, j);
+                    isSwap = true;
+                }
+            }
+            if(!isSwap){
+                break;
+            }
+        }
+    }
+
+
 }
