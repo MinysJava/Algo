@@ -6,28 +6,30 @@ public class Main {
     public static void main(String[] arg){
         Random random = new Random();
 
-        MyArray<Integer> ma = new MyArray<>();
-//
-//        ma.add(5);
-//        ma.add(66);
-//        ma.add(7);
-//
-//        ma.add(2,13);
-        for (int i = 0; i < 10; i++) {
+        MyArray<Integer> ma = new MyArray<>(1000000);
+
+        long arrFilling = System.currentTimeMillis();
+
+        for (int i = 0; i < 1000000; i++) {
             ma.add(random.nextInt(100));
         }
+        long arrFillFinish = System.currentTimeMillis();
+        System.out.println("Время заполнение цикла - " + (arrFillFinish - arrFilling));
 
-        System.out.println(ma);
-        ma.insertSort();
-        System.out.println(ma);
+//        long insertSortStart = System.currentTimeMillis();
+//        ma.insertSort();
+//        long insertSortFinish = System.currentTimeMillis();
+//        System.out.println("Время сортировки методом вставки - " + (insertSortFinish - insertSortStart));
 
-//        MySortedArray<Integer> msa = new MySortedArray<>();
-//
-//        msa.add(5);
-//        msa.add(3);
-//        msa.add(1);
-//
-//        System.out.println(msa);
-//        System.out.println(msa.binaryFind(3));
+        long bubbleSortStart = System.currentTimeMillis();
+        ma.bubbleSort();
+        long bubbleSortFinish = System.currentTimeMillis();
+        System.out.println("Время сортировки методом пузырька - " + (bubbleSortFinish - bubbleSortStart));
+
+//        long selecrionSortStart = System.currentTimeMillis();
+//        ma.seletionSort();
+//        long selecrionSortFinish = System.currentTimeMillis();
+//        System.out.println("Время сортировки методом выборки - " + (selecrionSortFinish - selecrionSortStart));
+
     }
 }
