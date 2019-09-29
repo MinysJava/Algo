@@ -15,7 +15,7 @@ public class Main {
         }
         long arrFillFinish = System.currentTimeMillis();
         System.out.println("Время заполнение цикла - " + (arrFillFinish - arrFilling));
-
+//
 //        long insertSortStart = System.currentTimeMillis();
 //        ma.insertSort();
 //        long insertSortFinish = System.currentTimeMillis();
