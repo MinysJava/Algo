@@ -1,5 +1,6 @@
 package Lesson_2;
 
+
 public class MyArray<Item extends Comparable> {
     private Item[] list;
     private int size = 0;
@@ -40,7 +41,7 @@ public class MyArray<Item extends Comparable> {
         size++;
     }
 //-----------------------------------------------------------------------------------------
-//-------------------Увеличивает размер массива при его заполнении----------------------
+//-------------------Увеличивает размер массива при его заполнении-----------------------
     private void cheakLength() {
         if (list[list.length - 1] != null){
             Item[] newList =(Item[]) new Comparable[(list.length * 2)];
@@ -147,6 +148,7 @@ public class MyArray<Item extends Comparable> {
             }
         }
     }
+
 
 
 }
