@@ -11,5 +11,19 @@ public class Main {
             int n = deque.removeLeft();
             System.out.println(n);
         }
+
+        String str = "12345";
+
+        System.out.println(reversString(str));
+    }
+
+    public static String reversString(String str){
+        String reversStr = "";
+        char[] symbol = str.toCharArray();
+
+        for (int i = symbol.length - 1; i >= 0; i--) {
+            reversStr += symbol[i];
+        }
+        return reversStr;
     }
 }
