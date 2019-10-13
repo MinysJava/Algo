@@ -9,16 +9,22 @@ public class MyTreeMap<Key extends Comparable<Key>, Value> {
         Node left;
         Node right;
         int size;
+        int height;
 
         public Node(Key key, Value value) {
             this.key = key;
             this.value = value;
             size = 1;
+            height = 0;
         }
     }
 
     public int size(){
         return size(root);
+    }
+
+    public int height(){
+        return height(root);
     }
 
     public Value get(Key key){
@@ -51,6 +57,7 @@ public class MyTreeMap<Key extends Comparable<Key>, Value> {
 
     public void delete(Key key){
         isKeyNotNull(key);
+        delete(root, key);
     }
 
     private Node put (Node node, Key key, Value value){
@@ -62,8 +69,10 @@ public class MyTreeMap<Key extends Comparable<Key>, Value> {
             node.value = value;
         } else if(cmp < 0){
             node.left = put(node.left, key, value);
+            node.height = height(node.left) + 1;
         } else {
             node.right = put(node.right, key, value);
+            node.height = height(node.right) + 1;
         }
         node.size = size(node.left) + size(node.right) + 1;
         return node;
@@ -74,6 +83,13 @@ public class MyTreeMap<Key extends Comparable<Key>, Value> {
             return 0;
         }
         return node.size;
+    }
+
+    private int height (Node node){
+        if(node == null){
+            return 0;
+        }
+        return node.height;
     }
 
     private boolean isKeyNotNull(Key key){
