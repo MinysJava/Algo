@@ -27,6 +27,10 @@ public class MyTreeMap<Key extends Comparable<Key>, Value> {
         return height(root);
     }
 
+    public boolean isBalanced(){
+        return isBalanced(root);
+    }
+
     public Value get(Key key){
         return get(root, key);
     }
@@ -58,6 +62,18 @@ public class MyTreeMap<Key extends Comparable<Key>, Value> {
     public void delete(Key key){
         isKeyNotNull(key);
         delete(root, key);
+    }
+
+    private boolean isBalanced(Node node){
+        if( node == null){
+            return true;
+        }
+//        if(node.right == null)
+
+        if(Math.abs(height(node.left) - height(node.right)) > 1){
+            return false;
+        }
+        return isBalanced(node.left) && isBalanced(node.right);
     }
 
     private Node put (Node node, Key key, Value value){
