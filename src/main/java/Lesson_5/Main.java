@@ -101,8 +101,8 @@ public class Main {
     }
 
 //----------------- Задача о рюкзаке ---------------------------
-
-    static int recBag(){
-
-    }
+//
+//    static int recBag(){
+//
+//    }
 }
