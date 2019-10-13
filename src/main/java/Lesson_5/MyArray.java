@@ -1,4 +1,4 @@
-package Lesson_2;
+package Lesson_5;
 
 
 public class MyArray<Item extends Comparable> {
@@ -149,6 +149,39 @@ public class MyArray<Item extends Comparable> {
         }
     }
 
+    private void quickSort(int low, int high){
+        if(low >= high){
+            return;
+        }
+        int mid = low + (high - low) / 2;
+        Item opora = list[mid];
 
+        int i = low;
+        int j = high;
+        while (i <= j){
+            while (less(list[i], opora)){
+                i++;
+            }
+            while (less(opora, list[j])){
+                j--;
+            }
+            if(i <= j){
+                swap(i, j);
+                i++;
+                j--;
+            }
+        }
 
+        if(low < j){
+            quickSort(low, j);
+        }
+
+        if(high > i){
+            quickSort(i, high);
+        }
+    }
+
+    public void qSort(){
+        quickSort(0, size - 1);
+    }
 }
