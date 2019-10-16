@@ -26,7 +26,10 @@ public class Main {
         graph.addEdge(6,8);
         graph.addEdge(6,7);
 
+        int ver = 6;
+
         BreadthFirstPath bfp = new BreadthFirstPath(graph, 0);
-        System.out.println(bfp.pathTo(6));
+        System.out.println(bfp.pathTo(ver));
+        System.out.println("Кратчайший путь до вершины " + ver + " равен: " + bfp.pathTo(ver).size());
     }
 }
