@@ -72,7 +72,17 @@ public class ChainingHashMap<Key, Value> {
         }
         return null;
     }
-
+//--------------- Удаление -----------------
+    public void del(Key key){
+        isKeyNotNull(key);
+        int i = hash(key);
+        for (Node node : st[i]) {
+            if(key.equals(node.key)){
+                st[i].remove();
+            }
+        }
+    }
+//------------------------------------------
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

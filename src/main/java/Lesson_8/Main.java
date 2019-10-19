@@ -9,7 +9,15 @@ public class Main {
         map.put(12, "12");
         map.put(15, "15");
 
-        System.out.println(map.get(1));
+//        System.out.println(map.get(1));
+        System.out.println(map);
+
+        map.del(2);
+        System.out.println("-----------------");
+
+        System.out.println(map);
+        System.out.println("-----------------");
+        map.put(2, "two");
         System.out.println(map);
 
     }
