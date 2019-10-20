@@ -1,5 +1,7 @@
-package Lesson_2;
+package Lesson_5;
 
+
+import Lesson_2.MyArray;
 
 public class MySortedArray<Item extends Comparable> extends MyArray<Item>{
 
@@ -34,5 +36,20 @@ public class MySortedArray<Item extends Comparable> extends MyArray<Item>{
         }
         return -1;
     }
+
+    private int recBinaryFind(Item item, int lo, int hi){
+        int mid = lo + (hi - lo) / 2;
+        if(item.compareTo(get(mid)) == 0){
+            return mid;
+        } else if (lo == hi){
+            return -1;
+        } else if(item.compareTo(get(mid)) < 0){
+            return recBinaryFind(item, lo, mid);
+        } else if(item.compareTo(get(mid)) > 0){
+            return recBinaryFind(item, mid + 1, hi);
+        }
+        return  -1;
+    }
+
 
 }
