@@ -79,6 +79,8 @@ public class ChainingHashMap<Key, Value> {
         for (Node node : st[i]) {
             if(key.equals(node.key)){
                 st[i].remove();
+                size--;
+                return;
             }
         }
     }
